@@ -1,6 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import './fonts.scss';
 
 body {
   background-color: azure;
+  font-family: 'Ubuntu';
+  nav i {
+    color: red;
+  }
+}
+
+.hide {
+  display: none;
 }
