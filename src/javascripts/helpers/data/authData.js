@@ -15,13 +15,13 @@ const checkLoginStatus = () => {
       pageHeaderDiv.addClass('hide');
       boardsDiv.removeClass('hide');
       logoutButton.removeClass('hide');
+      boards.printBoards();
     } else {
       authDiv.removeClass('hide');
       pageHeaderDiv.removeClass('hide');
       boardsDiv.addClass('hide');
       logoutButton.addClass('hide');
       home.printHomeHeader();
-      boards.printAllBoards();
     }
   });
 };
