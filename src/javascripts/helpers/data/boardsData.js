@@ -7,7 +7,12 @@ const getBoardsByUid = (myUid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/boards.json?orderBy="uid"&equalTo="${myUid}"`)
     .then((response) => {
       const allBoardsData = response.data;
-      resolve(allBoardsData);
+      const myBoards = [];
+      Object.keys(allBoardsData).forEach((board) => {
+        allBoardsData[board].id = board;
+        myBoards.push(allBoardsData[board]);
+      });
+      resolve(myBoards);
     })
     .catch((err) => reject(err));
 });

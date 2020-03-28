@@ -2,14 +2,21 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import utils from '../../helpers/utils';
 import boardsData from '../../helpers/data/boardsData';
+import boardCardsBuilder from '../boardCardsBuilder/boardCardsBuilder';
 
 const printBoards = () => {
-  const myUid = firebase.auth().currentUser.uid;
+  const firebaseUser = firebase.auth().currentUser;
+  const myUid = firebaseUser.uid;
   boardsData.getBoardsByUid(myUid)
     .then((boards) => {
-      const domString = '<h1 class="text-center mt-3">Boards</h1>';
+      let domString = '';
+      domString += `<h1 class="text-center my-3">${firebaseUser.displayName}'s Boards</h1>`;
+      domString += '<div class="d-flex flex-wrap justify-content-center">';
+      boards.forEach((board) => {
+        domString += boardCardsBuilder.buildBoardCards(board);
+      });
+      domString += '</div>';
       utils.printToDom('boards-container', domString);
-      console.error('response', boards);
     })
     .catch((err) => console.error('could not get boards', err));
 };
