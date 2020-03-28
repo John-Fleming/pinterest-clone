@@ -1,0 +1,27 @@
+{
+  "board1" : {
+    "name": "Home",
+    "description": "Ideas for home decor",
+    "uid": "4L5G2ulPjfggu4Gkz9p3KF0pA4l1"
+  },
+  "board2" : {
+    "name": "Style",
+    "description": "Clothing inspiration",
+    "uid": "4L5G2ulPjfggu4Gkz9p3KF0pA4l1"
+  },
+  "board3" : {
+    "name": "Cooking",
+    "description": "Collection of recipes",
+    "uid": "4L5G2ulPjfggu4Gkz9p3KF0pA4l1"
+  },
+  "board4" : {
+    "name": "Fitness",
+    "description": "Ideas for staying in shape",
+    "uid": "12345"
+  },
+  "board5" : {
+    "name": "Hair",
+    "description": "Ideas for different hairstyles",
+    "uid": "67890"
+  }
+}
