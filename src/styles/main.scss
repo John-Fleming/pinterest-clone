@@ -3,13 +3,26 @@
 @import './fonts.scss';
 
 body {
-  background-color: azure;
+  background-color: white;
   font-family: 'Ubuntu';
   nav i {
-    color: red;
+    color: rgb(230,7,36);
   }
 }
 
 .hide {
   display: none;
 }
+
+#single-board-container {
+  position: relative;
+  #exit-pins-view {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .pins-card {
+    border: none;
+  }
+}
+

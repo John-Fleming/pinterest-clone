@@ -3,6 +3,7 @@ import 'firebase/auth';
 import utils from '../../helpers/utils';
 import boardsData from '../../helpers/data/boardsData';
 import boardCardsBuilder from '../boardCardsBuilder/boardCardsBuilder';
+import singleBoard from '../singleBoard/singleBoard';
 
 const printBoards = () => {
   const firebaseUser = firebase.auth().currentUser;
@@ -17,6 +18,7 @@ const printBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('boards-container', domString);
+      $('body').on('click', '.view-board-btn', singleBoard.displaySingleBoard);
     })
     .catch((err) => console.error('could not get boards', err));
 };

@@ -6,6 +6,7 @@ import boards from '../../components/boards/boards';
 const authDiv = $('#auth');
 const pageHeaderDiv = $('#page-header');
 const boardsDiv = $('#boards-container');
+const pinsDiv = $('#single-board-container');
 const logoutButton = $('#nav-logout-btn');
 
 const checkLoginStatus = () => {
@@ -13,6 +14,7 @@ const checkLoginStatus = () => {
     if (user) {
       authDiv.addClass('hide');
       pageHeaderDiv.addClass('hide');
+      pinsDiv.addClass('hide');
       boardsDiv.removeClass('hide');
       logoutButton.removeClass('hide');
       boards.printBoards();
