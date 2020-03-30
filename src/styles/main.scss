@@ -24,5 +24,15 @@ body {
   .pins-card {
     border: none;
   }
+  // make the delete button appear over images
+  .pins-content {
+    position: relative;
+  }
+  .delete-pin-btn {
+    position: absolute;
+    i {
+      color: rgb(230,7,36);
+    }
+  }
 }
 

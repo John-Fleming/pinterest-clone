@@ -10,6 +10,14 @@ const exitPinsViewEvent = () => {
   pinsDiv.addClass('hide');
 };
 
+const showPinDeleteBtn = () => {
+  $('.delete-pin-btn').removeClass('hide');
+};
+
+const hidePinDeleteBtn = () => {
+  $('.delete-pin-btn').addClass('hide');
+};
+
 const displaySingleBoard = (e) => {
   const selectedBoardId = e.target.closest('.card').id;
   pinsData.getPinsByBoardId(selectedBoardId)
@@ -30,4 +38,4 @@ const displaySingleBoard = (e) => {
     .catch((err) => console.error('get pins by boardId broke', err));
 };
 
-export default { displaySingleBoard };
+export default { displaySingleBoard, showPinDeleteBtn, hidePinDeleteBtn };

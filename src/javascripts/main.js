@@ -3,6 +3,7 @@ import apiKeys from './helpers/apiKeys.json';
 import authData from './helpers/data/authData';
 import auth from './components/auth/auth';
 import navbar from './components/navbar/navbar';
+import singleBoard from './components/singleBoard/singleBoard';
 import 'bootstrap';
 import '../styles/main.scss';
 
@@ -11,6 +12,8 @@ const init = () => {
   authData.checkLoginStatus();
   auth.loginButton();
   navbar.logoutEvent();
+  $('body').on('mouseenter', '.pins-card', singleBoard.showPinDeleteBtn);
+  $('body').on('mouseleave', '.pins-card', singleBoard.hidePinDeleteBtn);
 };
 
 init();
