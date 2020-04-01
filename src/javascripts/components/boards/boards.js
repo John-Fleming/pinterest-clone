@@ -18,7 +18,7 @@ const printBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('boards-container', domString);
-      $('body').on('click', '.view-board-btn', singleBoard.displaySingleBoard);
+      $('body').on('click', '.view-board-btn', singleBoard.viewBoardEvent);
     })
     .catch((err) => console.error('could not get boards', err));
 };
