@@ -10,12 +10,16 @@ const exitPinsViewEvent = () => {
   pinsDiv.addClass('hide');
 };
 
-const showPinDeleteBtn = () => {
-  $('.delete-pin-btn').removeClass('hide');
+const showPinDeleteBtn = (e) => {
+  const pinContent = e.target;
+  $(pinContent).find('.delete-pin-btn').removeClass('hide');
+  $(pinContent).find('.pins-photo').addClass('darken-img');
 };
 
-const hidePinDeleteBtn = () => {
-  $('.delete-pin-btn').addClass('hide');
+const hidePinDeleteBtn = (e) => {
+  const pinContent = e.target;
+  $(pinContent).find('.delete-pin-btn').addClass('hide');
+  $(pinContent).find('.pins-photo').removeClass('darken-img');
 };
 
 const displaySingleBoard = (e) => {
