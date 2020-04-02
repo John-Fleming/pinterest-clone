@@ -4,6 +4,23 @@ import utils from '../../helpers/utils';
 import boardsData from '../../helpers/data/boardsData';
 import boardCardsBuilder from '../boardCardsBuilder/boardCardsBuilder';
 import singleBoard from '../singleBoard/singleBoard';
+import pinsData from '../../helpers/data/pinsData';
+
+const removeBoard = (e) => new Promise((resolve, reject) => {
+  const boardId = e.target.closest('.card').id;
+  boardsData.deleteBoard(boardId)
+    .then(() => {
+      pinsData.getPinsByBoardId(boardId).then((pins) => {
+        pins.forEach((pin) => {
+          pinsData.deletePin(pin.id);
+        });
+        resolve();
+      });
+      // eslint-disable-next-line no-use-before-define
+      printBoards();
+    })
+    .catch((err) => reject(err));
+});
 
 const printBoards = () => {
   const firebaseUser = firebase.auth().currentUser;
@@ -18,7 +35,8 @@ const printBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('boards-container', domString);
-      $('body').on('click', '.view-board-btn', singleBoard.displaySingleBoard);
+      $('body').on('click', '.view-board-btn', singleBoard.viewBoardEvent);
+      $('body').on('click', '.delete-board-btn', removeBoard);
     })
     .catch((err) => console.error('could not get boards', err));
 };
