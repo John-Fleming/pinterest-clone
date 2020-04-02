@@ -25,7 +25,7 @@ const hidePinDeleteBtn = (e) => {
 // click event that deletes selected pin and recalls the GET request to print pins
 const removePin = (e) => {
   const pinId = e.target.closest('.card').id;
-  const selectedBoardId = $('.pins-container').attr('id');
+  const selectedBoardId = e.data;
   pinsData.deletePin(pinId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
@@ -41,7 +41,7 @@ const displaySingleBoard = (selectedBoardId) => {
       let domString = '';
       domString += '<h1 class="text-center my-3">Pins</h1>';
       domString += '<button id="exit-pins-view" class="btn mr-3"><i class="fas fa-undo fa-2x"></i></button>';
-      domString += `<div id="${selectedBoardId}" class="d-flex flex-wrap justify-content-center pins-container">`;
+      domString += `<div id="${selectedBoardId}Pins" class="d-flex flex-wrap justify-content-center pins-container">`;
       pins.forEach((pin) => {
         domString += pinsCardBuilder.buildPinCards(pin);
       });
@@ -49,7 +49,7 @@ const displaySingleBoard = (selectedBoardId) => {
       utils.printToDom('single-board-container', domString);
       pinsDiv.removeClass('hide');
       boardsDiv.addClass('hide');
-      $('body').on('click', '.delete-pin-btn', removePin);
+      $('body').on('click', '.delete-pin-btn', selectedBoardId, removePin);
       $('#exit-pins-view').click(exitPinsViewEvent);
     })
     .catch((err) => console.error('get pins by boardId broke', err));
