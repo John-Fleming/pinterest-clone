@@ -6,7 +6,7 @@ import boardCardsBuilder from '../boardCardsBuilder/boardCardsBuilder';
 import singleBoard from '../singleBoard/singleBoard';
 import pinsData from '../../helpers/data/pinsData';
 
-const removeBoard = (e) => new Promise((resolve, reject) => {
+const removeBoard = (e) => {
   const boardId = e.target.closest('.card').id;
   boardsData.deleteBoard(boardId)
     .then(() => {
@@ -14,13 +14,12 @@ const removeBoard = (e) => new Promise((resolve, reject) => {
         pins.forEach((pin) => {
           pinsData.deletePin(pin.id);
         });
-        resolve();
       });
       // eslint-disable-next-line no-use-before-define
       printBoards();
     })
-    .catch((err) => reject(err));
-});
+    .catch((err) => console.error('remove board broke', err));
+};
 
 const printBoards = () => {
   const firebaseUser = firebase.auth().currentUser;
