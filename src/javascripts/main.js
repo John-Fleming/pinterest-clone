@@ -4,6 +4,7 @@ import authData from './helpers/data/authData';
 import auth from './components/auth/auth';
 import navbar from './components/navbar/navbar';
 import singleBoard from './components/singleBoard/singleBoard';
+import newBoardComponent from './components/newBoard/newBoard';
 import 'bootstrap';
 import '../styles/main.scss';
 
@@ -14,6 +15,7 @@ const init = () => {
   navbar.logoutEvent();
   $('body').on('mouseenter', '.pins-card', singleBoard.showPinDeleteBtn);
   $('body').on('mouseleave', '.pins-card', singleBoard.hidePinDeleteBtn);
+  $('body').on('click', '#create-board-btn', newBoardComponent.createNewBoard);
 };
 
 init();
