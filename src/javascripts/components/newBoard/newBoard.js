@@ -9,7 +9,6 @@ const createNewBoard = () => {
     name: $('#board-name').val(),
     uid: firebase.auth().currentUser.uid,
   };
-  console.error('newBoard submission', newBoardObject);
   boardsData.addBoard(newBoardObject)
     .then(() => {
       boards.printBoards();
