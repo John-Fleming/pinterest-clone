@@ -1,7 +1,7 @@
 const buildBoardCards = (boards) => {
   let domString = '';
   domString += '<div class="col-lg-3 col-md-6">';
-  domString += `<div class="card text-center board-card" id="${boards.id}">`;
+  domString += `<div class="card text-center board-card my-2" id="${boards.id}">`;
   domString += '  <div class="card-header">';
   domString += `    <h5 class="card-title"><strong>${boards.name}</strong></h5>`;
   domString += '  </div>';

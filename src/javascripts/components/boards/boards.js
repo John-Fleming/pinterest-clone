@@ -28,6 +28,9 @@ const printBoards = () => {
     .then((boards) => {
       let domString = '';
       domString += `<h1 class="text-center my-3">${firebaseUser.displayName}'s Boards</h1>`;
+      domString += '<div class="text-center my-3">';
+      domString += '<button type="button" id="show-board-form" class="btn btn-light" data-toggle="modal" data-target="#board-form-modal"><i class="fas fa-plus"></i></button>';
+      domString += '</div>';
       domString += '<div class="d-flex flex-wrap justify-content-center">';
       boards.forEach((board) => {
         domString += boardCardsBuilder.buildBoardCards(board);
