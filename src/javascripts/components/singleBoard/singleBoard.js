@@ -10,15 +10,17 @@ const exitPinsViewEvent = () => {
   pinsDiv.addClass('hide');
 };
 
-const showPinDeleteBtn = (e) => {
+const showPinBtns = (e) => {
   const pinContent = e.target;
   $(pinContent).find('.delete-pin-btn').removeClass('hide');
+  $(pinContent).find('.edit-pin-btn').removeClass('hide');
   $(pinContent).find('.pins-photo').addClass('darken-img');
 };
 
-const hidePinDeleteBtn = (e) => {
+const hidePinBtns = (e) => {
   const pinContent = e.target;
   $(pinContent).find('.delete-pin-btn').addClass('hide');
+  $(pinContent).find('.edit-pin-btn').addClass('hide');
   $(pinContent).find('.pins-photo').removeClass('darken-img');
 };
 
@@ -63,7 +65,7 @@ const displaySingleBoard = (selectedBoardId) => {
       let domString = '';
       domString += '<h1 class="text-center my-3">Pins</h1>';
       domString += '<button id="exit-pins-view" class="btn mr-3"><i class="fas fa-undo fa-2x"></i></button>';
-      domString += `<div class="d-flex flex-wrap justify-content-center pins-container" id="test" data-board-id=${selectedBoardId}>`;
+      domString += `<div class="d-flex flex-wrap justify-content-center pins-container" data-board-id=${selectedBoardId}>`;
       domString += '<div class="col-12 text-center">';
       domString += '<button type="button" id="show-pins-form" class="btn btn-light" data-toggle="modal" data-target="#pins-form-modal">';
       domString += '<i class="fas fa-plus"></i></button>';
@@ -88,7 +90,7 @@ const viewBoardEvent = (e) => {
 
 export default {
   viewBoardEvent,
-  showPinDeleteBtn,
-  hidePinDeleteBtn,
+  showPinBtns,
+  hidePinBtns,
   pinsEvents,
 };
