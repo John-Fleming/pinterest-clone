@@ -2,6 +2,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import home from '../../components/home/home';
 import boards from '../../components/boards/boards';
+import singleBoard from '../../components/singleBoard/singleBoard';
+
 
 const authDiv = $('#auth');
 const pageHeaderDiv = $('#page-header');
@@ -18,6 +20,7 @@ const checkLoginStatus = () => {
       boardsDiv.removeClass('hide');
       logoutButton.removeClass('hide');
       boards.printBoards();
+      singleBoard.pinsEvents();
     } else {
       authDiv.removeClass('hide');
       pageHeaderDiv.removeClass('hide');

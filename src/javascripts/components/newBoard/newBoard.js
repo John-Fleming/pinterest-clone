@@ -12,6 +12,7 @@ const createNewBoard = () => {
   boardsData.addBoard(newBoardObject)
     .then(() => {
       boards.printBoards();
+      $('#new-board-form').trigger('reset');
     })
     .catch((err) => console.error('could not add a new board', err));
 };

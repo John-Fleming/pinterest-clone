@@ -25,7 +25,7 @@ const hidePinDeleteBtn = (e) => {
 // click event that deletes selected pin and recalls the GET request to print pins
 const removePin = (e) => {
   const pinId = e.target.closest('.card').id;
-  const selectedBoardId = e.data;
+  const selectedBoardId = $('.pins-container').data('boardId');
   pinsData.deletePin(pinId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
@@ -35,8 +35,8 @@ const removePin = (e) => {
 };
 
 // click event that adds a new pin
-const createNewPin = (e) => {
-  const selectedBoardId = e.data;
+const createNewPin = () => {
+  const selectedBoardId = $('.pins-container').data('boardId');
   const newPinObject = {
     boardId: selectedBoardId,
     imageUrl: $('#pin-image-url').val(),
@@ -45,8 +45,15 @@ const createNewPin = (e) => {
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       displaySingleBoard(selectedBoardId);
+      $('#new-pin-form').trigger('reset');
     })
     .catch((err) => console.error('could not add a new board', err));
+};
+
+const pinsEvents = () => {
+  $('body').on('click', '#create-pin-btn', createNewPin);
+  $('body').on('click', '.delete-pin-btn', removePin);
+  $('body').on('click', '#exit-pins-view', exitPinsViewEvent);
 };
 
 // GET request that accesses pins entity and calls printToDOM
@@ -56,10 +63,12 @@ const displaySingleBoard = (selectedBoardId) => {
       let domString = '';
       domString += '<h1 class="text-center my-3">Pins</h1>';
       domString += '<button id="exit-pins-view" class="btn mr-3"><i class="fas fa-undo fa-2x"></i></button>';
-      domString += '<div class="text-center my-3">';
-      domString += '<button type="button" id="show-pins-form" class="btn btn-light" data-toggle="modal" data-target="#pins-form-modal"><i class="fas fa-plus"></i></button>';
+      domString += `<div class="d-flex flex-wrap justify-content-center pins-container" id="test" data-board-id=${selectedBoardId}>`;
+      domString += '<div class="col-12 text-center">';
+      domString += '<button type="button" id="show-pins-form" class="btn btn-light" data-toggle="modal" data-target="#pins-form-modal">';
+      domString += '<i class="fas fa-plus"></i></button>';
+      domString += '</button>';
       domString += '</div>';
-      domString += '<div class="d-flex flex-wrap justify-content-center pins-container">';
       pins.forEach((pin) => {
         domString += pinsCardBuilder.buildPinCards(pin);
       });
@@ -75,9 +84,11 @@ const displaySingleBoard = (selectedBoardId) => {
 const viewBoardEvent = (e) => {
   const selectedBoardId = e.target.closest('.card').id;
   displaySingleBoard(selectedBoardId);
-  $('body').on('click', '#create-pin-btn', selectedBoardId, createNewPin);
-  $('body').on('click', '.delete-pin-btn', selectedBoardId, removePin);
-  $('#exit-pins-view').click(exitPinsViewEvent);
 };
 
-export default { viewBoardEvent, showPinDeleteBtn, hidePinDeleteBtn };
+export default {
+  viewBoardEvent,
+  showPinDeleteBtn,
+  hidePinDeleteBtn,
+  pinsEvents,
+};

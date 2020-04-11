@@ -32,14 +32,16 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label for="board-name">Board Name</label>
-            <input type="text" class="form-control" id="board-name" placeholder="Exercise">
-          </div>
-          <div class="form-group">
-            <label for="board-description">Description</label>
-            <input type="text" class="form-control" id="board-description" placeholder="Ideas for staying fit">
-          </div>
+          <form id="new-board-form">
+            <div class="form-group">
+              <label for="board-name">Board Name</label>
+              <input type="text" class="form-control" id="board-name" placeholder="Exercise">
+            </div>
+            <div class="form-group">
+              <label for="board-description">Description</label>
+              <input type="text" class="form-control" id="board-description" placeholder="Ideas for staying fit">
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="submit" id="create-board-btn" class="btn btn-primary" data-dismiss="modal">Create Board</button>
@@ -58,10 +60,12 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label for="pin-image-url">Pin Image</label>
-            <input type="text" class="form-control" id="pin-image-url" placeholder="Add image URL here">
-          </div>
+          <form id="new-pin-form">
+            <div class="form-group">
+              <label for="pin-image-url">Pin Image</label>
+              <input type="text" class="form-control" id="pin-image-url" placeholder="Add image URL here">
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="submit" id="create-pin-btn" class="btn btn-primary" data-dismiss="modal">Add Pin</button>
