@@ -13,8 +13,8 @@ const init = () => {
   authData.checkLoginStatus();
   auth.loginButton();
   navbar.logoutEvent();
-  $('body').on('mouseenter', '.pins-card', singleBoard.showPinDeleteBtn);
-  $('body').on('mouseleave', '.pins-card', singleBoard.hidePinDeleteBtn);
+  $('body').on('mouseenter', '.pins-card', singleBoard.showPinBtns);
+  $('body').on('mouseleave', '.pins-card', singleBoard.hidePinBtns);
   $('body').on('click', '#create-board-btn', newBoardComponent.createNewBoard);
 };
 

@@ -35,6 +35,14 @@ body {
       color: rgb(230,7,36);
     }
   }
+  .edit-pin-btn {
+    position: absolute;
+    right: 1em;
+    z-index: 1;
+    i {
+      color: rgb(55, 7, 230);
+    }
+  }
 }
 
 .darken-img {
